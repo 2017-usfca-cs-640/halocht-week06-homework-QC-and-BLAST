@@ -1,5 +1,5 @@
 # Sequence QC and BLAST homework assignment for CS640
-## Due as a pull request on October 4, 2017 before 4:30 pm
+## Due as a pull request on October 6, 2017 before 4:30 pm
 
 The **goal of this assignment** is to work through the first stages of a realistic analysis workflow, starting with downloading of fastq files, through QC checks, trimming, and finally BLASTing them against a local copy of GenBank (on the server). The data we will be using is from the NCBI Sequence Read Archive study number ERP022657. A summary of the information is available [here](https://www.ncbi.nlm.nih.gov/Traces/study/?WebEnv=NCID_1_128047291_130.14.22.33_5555_1505945515_1626731749_0MetA0_S_HStore&query_key=5). The metadata from this study is included in the git repository for this assignment in a `data/metadata` directory.
 
@@ -21,7 +21,7 @@ This second assignment will be worth 20 points. The grading breakdown will be as
 * 4 points - Scripts are appropriately commented and well organized
 * 4 points - Appropriate use of git to version control the steps, including adding and committing the appropriate files at the specific steps below, and writing informative and appropriately formatted commit messages
 
-You must submit your work as a Pull Request to the class organization ('2017-usfca-cs-640') on GitHub by 4:30 pm on Wednesday, October 4 for full credit. Late assignments will not be accepted, since we will be peer reviewing the code after it is submitted.
+You must submit your work as a Pull Request to the class organization ('2017-usfca-cs-640') on GitHub by 4:30 pm on Friday, October 6 for full credit. Late assignments will not be accepted, since we will be peer reviewing the code after it is submitted.
 
 Steps:
 
@@ -94,7 +94,7 @@ blastn -db /blast-db/nt -num_threads 2 -outfmt '10 sscinames std' -out blast_res
    an [appropriate commit message](https://chris.beams.io/posts/git-commit/).
 15. After you have finished the script and it successfully runs at the command line, be sure to add a commit marking this milestone (and push back up to GitHub just to be safe!).
 16. You can use `cut`, `sort`, and `uniq -c` to help you summarize the results from the blast search.
-17. Using `nano`, write a markdown formatted file named `2017-10-04_preliminary_BLAST_analysis.md` (changing date as needed depending on when you write it) that contains both a section summarizing the QC checks you ran with `FastQC` (did the sequences look to be of sufficient quality? Were there any samples that were significantly worse than the other or different in some sort of obvious way?) as well as some preliminary research into the organisms you found using BLAST. You shouldn't try to look everything up in your target samples, but pick some of the more common strains that you find and see what you can learn about them by doing a brief literature search.
+17. Using `nano`, write a markdown formatted file named `2017-10-06_preliminary_BLAST_analysis.md` (changing date as needed depending on when you write it) that contains both a section summarizing the QC checks you ran with `FastQC` (did the sequences look to be of sufficient quality? Were there any samples that were significantly worse than the other or different in some sort of obvious way?) as well as some preliminary research into the organisms you found using BLAST. You shouldn't try to look everything up in your target samples, but pick some of the more common strains that you find and see what you can learn about them by doing a brief literature search.
 18. Add and commit this analysis report file as well, once you are done.
 19. Once that's all done, add, commit, and push everything back to your fork of the original repository on GitHub with `git push -u origin master`. Remember that you can only push what you have committed, so be sure all of your work is committed. Be sure to save your files often, and check `git status` frequently as you work.
 20. Submit a Pull Request back to the organization repository to submit your assignment. Make sure the Pull Request (PR) has a useful description of the changes you made
