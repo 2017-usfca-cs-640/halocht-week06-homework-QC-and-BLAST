@@ -16,4 +16,17 @@ echo "BLASTDB checked"
 
 echo "##################################################"
 
-echo "Downloading fastq files"
+
+
+echo "Downloading fastq files into data/raw_data"
+
+# the pipe and tail -n +2 is a handy way to exclude the first line
+for SRA_number in $(cut -f 6 data/metadata/fierer_forensic_hand_mouse_SraRunTable.txt | tail -n +2)
+do
+    fastq-dump -v $SRA_number -O halocht-week06-homework-QC-and-BLAST/data/raw_data
+done
+
+echo "Done downloading fastq files into ../data/raw_data"
+
+cat halocht-week06-homework-QC-and-BLAST/data/raw_data
+
