@@ -46,7 +46,7 @@ echo "Proceeding with Trimmomatic"
 # Trimmomatic is a tool that will cut the adapter sequence of Illumina sequence reads and any other Illumina-specific additions
 
 
-for file in  data/raw_data
+for file in data/raw_data
 do
 	TrimmomaticSE -threads 2 -phred33 data/raw_data/ERR1942280.fastq data/trimmed/$(basename -s .fastq ERR1942280.fastq).trim.fastq LEADING:5 TRAILING:5 SLIDINGWINDOW:8:25 MINLEN:150
 done
@@ -55,4 +55,14 @@ echo "Trimmed the hedges"
 
 echo "######################################################"
 
+# Now you must convert the fastq file into a fasta file so that you can blast it against NCBI
+
+echo "Bioawk Initiated"
+
+for file in data/trimmed
+do
+	bioawk -c fastx '{print ">"$name"\n"$seq}' data/trimmed/filename.trim.fastq > output/bioawk/
+done
+
+echo "fastq --> fasta"
 
