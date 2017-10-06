@@ -20,13 +20,13 @@ echo "##################################################"
 
 echo "Downloading fastq files into data/raw_data"
 
-# the pipe and tail -n +2 is a handy way to exclude the first line
+# The pipe and tail -n +2 is a handy way to exclude the first line
 for SRA_number in $(cut -f 6 data/metadata/fierer_forensic_hand_mouse_SraRunTable.txt | tail -n +2)
 do
     fastq-dump -v $SRA_number -O data/raw_data
 done
 
-echo "Done downloading fastq files into /data/raw_data"
+echo "Done downloading fastq files into data/raw_data"
 
 echo "#####################################################"
 
@@ -36,4 +36,23 @@ echo "Fastqc"
 echo "Running fastqc"
 
 fastqc data/raw_data/*.fastq --outdir=output/fastqc
+
+echo "QC completed"
+
+echo "#####################################################"
+
+echo "Proceeding with Trimmomatic"
+
+# Trimmomatic is a tool that will cut the adapter sequence of Illumina sequence reads and any other Illumina-specific additions
+
+
+for file in  data/raw_data
+do
+	TrimmomaticSE -threads 2 -phred33 data/raw_data/ERR1942280.fastq data/trimmed/$(basename -s .fastq ERR1942280.fastq).trim.fastq LEADING:5 TRAILING:5 SLIDINGWINDOW:8:25 MINLEN:150
+done
+
+echo "Trimmed the hedges"
+
+echo "######################################################"
+
 
