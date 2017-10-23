@@ -68,3 +68,12 @@ done
 
 echo "fastq --> fasta"
 
+# Last task is to BLAST against NCBI
+
+for file in data/fasta/*.fasta
+do
+
+	blastn -db /blast-db/nt -num_threads 2 -outfmt '10 sscinames std' -out $(basename -s .fasta $file).csv -max_target_seqs 1 -negative_gilist /blast-db/2017-09-21_GenBank_Environmental_Uncultured_to_Exclude.txt -query $file
+done
+
+echo "BLASTing done"
