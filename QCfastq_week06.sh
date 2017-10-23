@@ -59,9 +59,11 @@ echo "######################################################"
 
 echo "Bioawk Initiated"
 
-for file in data/trimmed
+for file in data/trimmed/*.trim.fastq
 do
-	bioawk -c fastx '{print ">"$name"\n"$seq}' data/trimmed/filename.trim.fastq > output/bioawk/
+
+	bioawk -c fastx '{print ">"$name"\n"$seq}' $file > data/fasta/$(basename -s .trim.fastq $file).fasta
+
 done
 
 echo "fastq --> fasta"
